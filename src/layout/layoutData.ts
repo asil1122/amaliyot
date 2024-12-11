@@ -1,5 +1,5 @@
 import React from "react";
-import { UserOutlined } from "@ant-design/icons";
+import { AppleFilled, ContainerOutlined,TagOutlined, PictureOutlined} from "@ant-design/icons";
 
 interface LayoutData {
   id: number;
@@ -13,6 +13,24 @@ export const LayoutData: LayoutData[] = [
     id: 1,
     label: "Category List",
     path: "/app",
-    icon: UserOutlined,
+    icon: ContainerOutlined,
   },
+  {
+    id: 2,
+    label: "Sub Category List",
+    path: "/app/sub-category",
+    icon: TagOutlined,
+  },
+  {
+    id: 3,
+    label: "Banner",
+    path: "/app/banner-list",
+    icon: PictureOutlined,
+  },
+  {
+    id: 4,
+    label: "Brand",
+    path: "/app/brand-list",
+    icon: AppleFilled,
+  }
 ];

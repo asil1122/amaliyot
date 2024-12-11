@@ -6,7 +6,7 @@ export interface categoryType {
     id: number;
     title: string;
     image: string;
-    parent: number;
+    parent?: { id: number; title: string };
   }[];
 };
 

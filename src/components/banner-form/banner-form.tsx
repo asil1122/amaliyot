@@ -1,35 +1,28 @@
+
 import { Button, Form, Input, Upload, UploadFile } from "antd"
-import { initialValuesType } from "../../pages/editCategory"
+import { formType } from "../form"
 
-export interface formType {
-  onFinish?: (values: any) => void,
-  isLoding: boolean,
-  isEdit?: boolean,
-  form?: any
-  initialValues?: initialValuesType,
-  defaultFileList?: UploadFile[]
-}
-
-export const FormCategory = ({ onFinish, form, isLoding,initialValues, isEdit }: formType) => {
+export const BannerForm = ({ onFinish, initialValues, isLoding, isEdit, form }: formType) => {
+  console.log(initialValues, 'initialValues');
 
   const defaultFileList: UploadFile[] = [
     {
       uid: "-1",
-      name: `${initialValues?.title}`,
+      // name: `${initialValues?.title}`,
       status: "done",
       url: `${initialValues?.image}`,
     },
   ];
 
-  if(initialValues &&initialValues?.title == undefined) return <div>Loading...</div>
+  if (initialValues && initialValues?.title == undefined) return <div>Loading...</div>
 
   return (
     <div>
       {isLoding ? (
-        <h1>Loding.....</h1>
+        <h1>Loading.....</h1>
       ) : (
         <Form
-          initialValues={{title: initialValues?.title}}
+          initialValues={{...initialValues}}
           layout="vertical"
           form={form}
           onFinish={onFinish}
@@ -42,7 +35,9 @@ export const FormCategory = ({ onFinish, form, isLoding,initialValues, isEdit }:
           >
             <Input placeholder="Enter category title" />
           </Form.Item>
-
+          <Form.Item label="Description" name="description" rules={[{ required: true, message: "Please input the description!" }]}>
+            <Input.TextArea placeholder="Enter category description" />
+          </Form.Item>
           <Form.Item
             label="Image"
             name="image"
@@ -66,6 +61,7 @@ export const FormCategory = ({ onFinish, form, isLoding,initialValues, isEdit }:
           </Form.Item>
         </Form>
       )}
+
     </div>
   )
 }
