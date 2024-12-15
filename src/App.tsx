@@ -12,6 +12,12 @@ import { BannerList } from "./pages/banner-list/banner-list"
 import { BrandList } from "./pages/brand-list"
 import { BannerCreate } from "./pages/banner-create"
 import { EditBanner } from "./pages/edit-banner"
+import { BrandCreate } from "./pages/brand-create"
+import { BrandEdit } from "./pages/brand-edit"
+import { ProductList } from "./pages/product-list"
+import { ProductCreate } from "./pages/product-create/product-create"
+import { ProductEdit } from "./pages/product-edit"
+import { Variants } from "./pages/product-variant"
 
 function App() {
 
@@ -30,6 +36,12 @@ function App() {
           <Route path="/app/brand-list" element={<BrandList/>}/>
           <Route path="/app/banner-list/create" element={<BannerCreate/>}/>
           <Route path="/app/banner-list/edit/:id" element={<EditBanner/>}/>
+          <Route path="/app/brand-list/create" element={<BrandCreate/>}/>
+          <Route path="/app/brand-list/edit/:id" element={<BrandEdit/>}/>
+          <Route path="/app/product-list" element= {<ProductList/>} />
+          <Route path="/app/product-list/create" element={<ProductCreate/>}/>
+          <Route path="/app/product-list/edit/:id" element={<ProductEdit/>}/>
+          <Route path="/app/product-list/variants/:id" element={<Variants/>}/>
         </Route>
       </Routes>
     </>

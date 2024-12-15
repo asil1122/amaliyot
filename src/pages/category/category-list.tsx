@@ -3,6 +3,7 @@ import { useGetProducts } from "./service/query/useGetProducts";
 import { Link } from "react-router-dom";
 import { ColumnsType } from "antd/es/table";
 import { useDeleteItems } from "./service/mutation/useDeleteItems";
+import { SearchCategory } from "./searchCategory/searchCategory";
 
 export const CategoryList = () => {
   const { data } = useGetProducts()
@@ -63,6 +64,7 @@ export const CategoryList = () => {
 
   return (
     <div className="table-wrapper">
+      <SearchCategory />
       <Link to={'/app/create'}>
         <Button type="primary" variant="dashed">Create</Button>
       </Link>

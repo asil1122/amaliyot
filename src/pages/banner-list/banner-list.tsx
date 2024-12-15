@@ -33,7 +33,7 @@ export const BannerList = () => {
       key: "id",
     },
     {
-      title: "Image",
+      title: "IMG",
       dataIndex: "image",
       key: "image",
       render: (image) =>
