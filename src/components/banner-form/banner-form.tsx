@@ -8,7 +8,6 @@ export const BannerForm = ({ onFinish, initialValues, isLoding, isEdit, form }: 
   const defaultFileList: UploadFile[] = [
     {
       uid: "-1",
-      // name: `${initialValues?.title}`,
       status: "done",
       url: `${initialValues?.image}`,
     },

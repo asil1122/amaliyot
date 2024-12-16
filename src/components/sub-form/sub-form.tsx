@@ -7,17 +7,6 @@ export const SubForm = ({ onFinish, form, isLoding, initialValues, isEdit, defau
   console.log(isLoding);
   console.log(isEdit);
   
-
-  // const defaultFileList: UploadFile[] = [
-  //   {
-  //     uid: "-1",
-  //     name: `${initialValues?.title}`,
-  //     status: "done",
-  //     url: `${initialValues?.image}` || '',
-  //   },
-  // ];
-
-  // if (initialValues && initialValues?.title == undefined) return <div>Loading...</div>
   return (
     <>
       {isLoding ? (

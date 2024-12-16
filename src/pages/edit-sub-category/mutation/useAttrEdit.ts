@@ -4,7 +4,7 @@ import { FormValues } from "../../sub-create";
 
 export const useAttributeEdit = () => {
   return useMutation({
-    mutationFn: (data: FormValues| any) =>
+    mutationFn: (data: FormValues) =>
       request.patch(`/api/category_edit/`, data).then((res) => res.data),
   });
 };

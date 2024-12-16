@@ -3,19 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useGetProductId } from "./service/query/useGetProductId";
 import { ProductForm } from "../../components/product-form";
 import { useEditProduct } from "./service/mutation/useEditProduct";
-// import { RcFile } from "antd/es/upload";
-
-// interface TypeProduct {
-//   parent?: string;
-//   title?: string;
-//   description?: string;
-//   image?: { file: RcFile };
-//   is_new?: boolean;
-//   is_available?: boolean;
-//   category?: number;
-//   price?: number;
-// }
-
 
 export const ProductEdit = () => {
   const { id } = useParams();

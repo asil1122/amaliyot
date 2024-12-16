@@ -10,7 +10,6 @@ export const ProductForm = ({ onFinish, form, isLoding, initialValues, isEdit }:
   const defaultFileList: UploadFile[] = [
     {
       uid: "-1",
-      // name: `${initialValues?.title}`,
       status: "done",
       url: `${initialValues?.image}`,
     },
@@ -86,8 +85,6 @@ export const ProductForm = ({ onFinish, form, isLoding, initialValues, isEdit }:
               beforeUpload={() => false}
               accept="image/*"
               maxCount={1}
-              // fileList={fileList}
-              // onChange={({ fileList: newFileList }) => setFileList(newFileList)}
               defaultFileList={isEdit ? defaultFileList : []}
             >
               <Button type="primary">

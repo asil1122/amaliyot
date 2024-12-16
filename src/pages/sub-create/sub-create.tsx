@@ -40,7 +40,6 @@ export const SubCreate = () => {
 
   const SubCategorySubmit = (values: { title: string; image: { file: RcFile }; parent: string }) => {
     const formData = new FormData();
-    // values.parent = categoryData?.id;
     console.log('parent', values);
 
     formData.append("title", values.title);
@@ -65,7 +64,7 @@ export const SubCreate = () => {
     const attr_list: attr_listType[] = data.attributes.map((item: attr_listType) => ({
       category: [categoryData?.id],
       title: item.title,
-      values: item.values.map((value) => value), // Fixed parentheses
+      values: item.values.map((value) => value),
     }));
     console.log({ attr_list }, "dataAsil");
   
@@ -84,27 +83,6 @@ export const SubCreate = () => {
     );
   };
   
-  // const datas = { attr_list: data?.attributes?.map((item: Attribute) => ({
-  //   category: [categoryData?.id], 
-  //   title: item?.title, 
-  //   values: item.values.map((value) => value), 
-  // }))}
-
-  // console.log(data, 'daaaaaaaaaaaaaaaata');
-
-
-  // attributeMutate(datas , {
-  //     onSuccess: () => {
-  //       message.success("Attributes added successfully");
-  //       form.resetFields();
-  //       navigate('/app/sub-category')
-  //     },
-  //     onError: () => {
-  //       message.error(`Failed to add attributes`);
-  //     },
-  //   }
-  // );
-
   return (
     <>
       <Tabs defaultActiveKey="1" activeKey={tabs} items={[
