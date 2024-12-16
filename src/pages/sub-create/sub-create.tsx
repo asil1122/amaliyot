@@ -6,20 +6,17 @@ import { useCreateSub } from "./service/mutation/useCreateSub"
 import { SubAttributeForm } from "../../components/sub-attribute-form"
 import { useAttributeCreate } from "./service/mutation/useAttributeCreate"
 import { useNavigate } from "react-router-dom"
-// export interface attr_listType {
-//   category: number[];
-//   title: string;
-//   values: string[];
-// }
-
-// interface Value {
-//   value: string;
-// }
 
 export interface Attribute {
   category?: number[];
   key?: number;
   id?: number;
+  title: string;
+  values: string[];
+}
+
+export interface attr_listType {
+  category: number[];
   title: string;
   values: string[];
 }
@@ -36,7 +33,7 @@ export interface FormValues {
 }
 export const SubCreate = () => {
   const { mutate, data: categoryData } = useCreateSub()
-  const { mutate: attributeMutate  } = useAttributeCreate()
+  const { mutate: attributeMutate } = useAttributeCreate()
   const [tabs, setTabs] = useState<string>('1')
   const [form] = Form.useForm();
   const navigate = useNavigate();
@@ -65,28 +62,48 @@ export const SubCreate = () => {
   };
 
   const attributeSubmit = (data: FormValues) => {
-    const datas = { attr_list: data?.attributes?.map((item: Attribute) => ({
-      category: [categoryData?.id], 
-      title: item?.title, 
-      values: item.values.map((value) => value), 
-    }))}
-
-    console.log(data, 'daaaaaaaaaaaaaaaata');
-    
-
-    attributeMutate(datas , {
+    const attr_list: attr_listType[] = data.attributes.map((item: attr_listType) => ({
+      category: [categoryData?.id],
+      title: item.title,
+      values: item.values.map((value) => value), // Fixed parentheses
+    }));
+    console.log({ attr_list }, "dataAsil");
+  
+    attributeMutate(
+      { attr_list },
+      {
         onSuccess: () => {
           message.success("Attributes added successfully");
           form.resetFields();
-          navigate('/app/sub-category')
+          navigate("/app/sub-category");
         },
-        onError: () => {
-          message.error(`Failed to add attributes`);
+        onError: (error: any) => {
+          message.error(`Failed to add attributes: ${error.message}`);
         },
       }
     );
-  }
+  };
+  
+  // const datas = { attr_list: data?.attributes?.map((item: Attribute) => ({
+  //   category: [categoryData?.id], 
+  //   title: item?.title, 
+  //   values: item.values.map((value) => value), 
+  // }))}
 
+  // console.log(data, 'daaaaaaaaaaaaaaaata');
+
+
+  // attributeMutate(datas , {
+  //     onSuccess: () => {
+  //       message.success("Attributes added successfully");
+  //       form.resetFields();
+  //       navigate('/app/sub-category')
+  //     },
+  //     onError: () => {
+  //       message.error(`Failed to add attributes`);
+  //     },
+  //   }
+  // );
 
   return (
     <>
@@ -95,7 +112,7 @@ export const SubCreate = () => {
           key: '1',
           label: 'Add Category',
 
-          children: <SubForm  isEdit={false} isLoding={false} onFinish={SubCategorySubmit} form={form} />
+          children: <SubForm isEdit={false} isLoding={false} onFinish={SubCategorySubmit} form={form} />
         },
         {
           key: '2',

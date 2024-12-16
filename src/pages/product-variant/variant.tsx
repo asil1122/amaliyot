@@ -1,4 +1,4 @@
-import { Button, Flex, message, Table, Popconfirm } from "antd";
+import { Button, Flex, Image, message, Table } from "antd";
 import { Link, useParams } from "react-router-dom";
 import { ColumnsType } from "antd/es/table";
 import { uesGetVariant } from "./service/query/useGetVariant";
@@ -54,23 +54,12 @@ export const Variants = () => {
       title: "IMG",
       dataIndex: "img",
       key: "img",
-      render: (_, record) => (
-        <Link to={`/app/product/variants/${id}/${record.id}/images`}>
-          <Button variant="solid" type="primary">
-            Show Added Images
-          </Button>
-        </Link>
-      ),
+      render: (img) => <Image src={img} alt="img" width={80} height={70}/>,
     },
     {
       title: "Name",
       dataIndex: "name",
       key: "name",
-      render: (title) => (
-        <div style={{ textAlign: "center" }}>
-          <h3 style={{ fontSize: "20px", fontWeight: "600" }}>{title}</h3>
-        </div>
-      ),
     },
     {
       title: "Change",
@@ -79,25 +68,14 @@ export const Variants = () => {
       render: (_, record) => (
         <Flex gap={"20px"} justify="center">
           <div>
-            <Link to={`/app/product/variants/${id}/${record.id}`}>
               <Button type="primary">
-                Add image
+                Image
               </Button>
-            </Link>
           </div>
           <div>
-            <Popconfirm
-              onConfirm={() => {
-                return deleteVariant(record.id);
-              }}
-              cancelText={"No"}
-              okText={"Yes"}
-              title={"Do you wish to continue with past date?"}
-            >
-              <Button type="primary">
+              <Button type="primary" onClick={() => deleteVariant(record.id)}>
                 Delete
               </Button>
-            </Popconfirm>
           </div>
         </Flex>
       ),
@@ -107,7 +85,7 @@ export const Variants = () => {
   return (
     <>
       <div style={{ marginBottom: "20px" }}>
-        <Link to={`/app/product/variants/${id}/create`}>
+        <Link to={`/app/product-list/variants/${id}/create`}>
           <Button type="primary">Create</Button>
         </Link>
       </div>

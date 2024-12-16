@@ -18,6 +18,7 @@ import { ProductList } from "./pages/product-list"
 import { ProductCreate } from "./pages/product-create/product-create"
 import { ProductEdit } from "./pages/product-edit"
 import { Variants } from "./pages/product-variant"
+import { VAriantCreate } from "./pages/variant-create"
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/app/product-list/create" element={<ProductCreate/>}/>
           <Route path="/app/product-list/edit/:id" element={<ProductEdit/>}/>
           <Route path="/app/product-list/variants/:id" element={<Variants/>}/>
+          <Route path="/app/product-list/variants/:id/create" element={<VAriantCreate/>}/>
         </Route>
       </Routes>
     </>
